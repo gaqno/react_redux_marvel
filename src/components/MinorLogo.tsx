@@ -1,20 +1,12 @@
 import React from "react";
 
-type MinorLogo = {
-  height: number | string;
-  width: number | string;
-};
-
-export const MinorLogo = (props: MinorLogo) => {
-  const { height, width } = props;
+export const MinorLogo = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      style={{
-        height: height,
-        width: width,
-      }}
+      width="215"
+      height="32"
       viewBox="0 0 215 32"
     >
       <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
@@ -29,8 +21,8 @@ export const MinorLogo = (props: MinorLogo) => {
             ></image>
             <text
               fill="#404040"
-              fontFamily=".AppleSystemUIFont"
-              fontSize="10"
+              fontFamily="Roboto"
+              fontSize="16.672"
               fontWeight="normal"
             >
               <tspan x="108" y="24">

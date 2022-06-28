@@ -1,5 +1,5 @@
 import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
-import { marvelApi } from "./store";
+import { marvelApi } from "./app/apiSlice";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";

@@ -1,8 +1,10 @@
-import IconHero from "./components/IconHero";
 import { MinorLogo } from "./components/MinorLogo";
 import { MinorSearch } from "./components/MinorSearch";
+import { IconHero } from "./components/IconHero";
+import { marvelApi } from "./store";
 
 const App = () => {
+  const { data: characters } = marvelApi.useGetCharactersQuery();
   return (
     <div
       style={{
@@ -31,16 +33,15 @@ const App = () => {
         }}
       >
         <MinorSearch height="25px" width={"25px"} marginY="15px" />
-        <span
+        <input
+          placeholder="Procure por heróis"
           style={{
             position: "relative",
             bottom: "25px",
             marginLeft: "25px",
             marginRight: "25px",
           }}
-        >
-          Procure por heróis
-        </span>
+        ></input>
 
         <div
           style={{
@@ -51,7 +52,6 @@ const App = () => {
         >
           <h3>Encontrado x heróis</h3>
           <IconHero />
-          {/* Faça um toggle */}
         </div>
       </div>
     </div>

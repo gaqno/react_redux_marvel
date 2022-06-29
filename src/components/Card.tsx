@@ -1,19 +1,18 @@
-import { INSPECT_MAX_BYTES } from "buffer";
-import React, { Component, useEffect, useState } from "react";
-import { marvelApi } from "../app/apiSlice";
-import { Favorite } from "./Favorite";
+import { Favorite } from "./UI/Favorite";
 
-export const Card = ({ characters }: any) => {
+export const Card = ({ item }: any) => {
+  console.log("Card", item);
   const favorite = (item: any) => {
     var previousData = JSON.parse(localStorage.getItem("favorites") || "{}");
     previousData.push(item);
     localStorage.setItem("favorites", JSON.stringify(previousData));
   };
-  console.log("Card", characters);
+
   return (
     <div style={{ ...styles.container, flexDirection: "column" }}>
+      <img src={item.thumbnail.path + "/standard_fantastic.jpg"} alt="" />
       <div style={{ ...styles.bottom, flexDirection: "row" }}>
-        {/* <img src={item.thumbnail.path} alt="" /> */}
+        <h2>{item.name}</h2>
         <Favorite />
       </div>
     </div>
@@ -23,9 +22,9 @@ export const Card = ({ characters }: any) => {
 const styles = {
   container: {
     display: "flex",
-    height: "12em",
-    width: "12em",
-    margin: "0 auto",
+    width: "11.5em",
+    flexDirection: "column",
+    margin: "0px 5em 2em 5em",
   },
   bottom: {
     display: "flex",

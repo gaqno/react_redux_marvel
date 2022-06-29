@@ -1,5 +1,7 @@
-import { MinorLogo } from "./MinorLogo";
-import { MinorSearch } from "./MinorSearch";
+import { SetStateAction, useState } from "react";
+import Search from "./Search";
+import { MinorLogo } from "./UI/MinorLogo";
+import { MinorSearch } from "./UI/MinorSearch";
 
 export const Header = () => {
   return (
@@ -10,10 +12,6 @@ export const Header = () => {
         Mergulha no domínio deslumbrante de todos os personagens clássicos que
         você ama - e aqueles que você descobrirá em breve!
       </span>
-      <div style={{ ...styles.searchBar }}>
-        <MinorSearch height="25px" width={"25px"} marginY="15px" />
-        <input placeholder="Procure por heróis" style={{ ...styles.input }} />
-      </div>
     </div>
   );
 };
@@ -24,24 +22,5 @@ const styles = {
     width: "80%",
     margin: "30px auto",
     alignItems: "center",
-  },
-  searchBar: {
-    display: "flex",
-    alignItems: "center",
-    width: "80%",
-    height: "3em",
-    borderRadius: "25px",
-    backgroundColor: "#fdecec",
-    color: "red",
-  },
-  input: {
-    marginLeft: "10px",
-    backgroundColor: "#fdecec",
-    fontSize: "12px",
-    color: "#fa7c7c",
-    fontStyle: "#fa7c7c",
-    border: "none",
-    width: "80%",
-    height: "60%",
   },
 };

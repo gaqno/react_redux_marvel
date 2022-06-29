@@ -1,8 +1,11 @@
 import React from "react";
 
-export const Favorite = () => {
+export const FavoriteCard = () => {
   return (
-    <button onClick={() => console.log("Favorite")}>
+    <button
+      style={{ border: "none", backgroundColor: "transparent" }}
+      onClick={() => console.log("Favorite")}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"

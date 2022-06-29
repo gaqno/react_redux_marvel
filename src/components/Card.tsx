@@ -1,20 +1,22 @@
-import { Favorite } from "./UI/Favorite";
+import { Link, Outlet } from "react-router-dom";
+import { FavoriteCard } from "./UI/FavoriteCard";
 
 export const Card = ({ item }: any) => {
-  console.log("Card", item);
-  const favorite = (item: any) => {
-    var previousData = JSON.parse(localStorage.getItem("favorites") || "{}");
-    previousData.push(item);
-    localStorage.setItem("favorites", JSON.stringify(previousData));
-  };
+  // const favorite = (item: any) => {
+  //   var previousData = JSON.parse(localStorage.getItem("favorites") || "{}");
+  //   previousData.push(item);
+  //   localStorage.setItem("favorites", JSON.stringify(previousData));
+  // };
 
   return (
     <div style={{ ...styles.container, flexDirection: "column" }}>
-      <img src={item.thumbnail.path + "/standard_fantastic.jpg"} alt="" />
-      <div style={{ ...styles.bottom, flexDirection: "row" }}>
-        <h2>{item.name}</h2>
-        <Favorite />
-      </div>
+      <Link to={"/hero"} style={{ ...styles.img }}>
+        <img src={item.thumbnail.path + "/standard_fantastic.jpg"} alt="" />
+        <div style={{ ...styles.bottom, flexDirection: "row" }}>
+          <h3>{item.name}</h3>
+          <FavoriteCard />
+        </div>
+      </Link>
     </div>
   );
 };
@@ -22,14 +24,18 @@ export const Card = ({ item }: any) => {
 const styles = {
   container: {
     display: "flex",
-    width: "11.5em",
+    width: "15.5em",
     flexDirection: "column",
-    margin: "0px 5em 2em 5em",
+    margin: "0 1em",
   },
   bottom: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    width: "100%",
+  },
+  img: {
+    textDecoration: "none",
     width: "100%",
   },
 };

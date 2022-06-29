@@ -1,45 +1,23 @@
-import { Header } from "./components/Header";
-import { Body } from "./components/Body";
-import { SetStateAction, useEffect, useState } from "react";
-import marvelApi from "./services/marvelApi";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Hero } from "./components/Hero";
+import { Landing } from "./components/Landing";
 import "./App.css";
-import Search from "./components/Search";
 
-const App = () => {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [query, setQuery] = useState("");
-
-  useEffect(() => {
-    if (loading) {
-      console.warn("Loading...");
-    }
-    marvelApi.getAllCharacters(20, (characters: any) => {
-      setItems(characters.data.data.results);
-      console.log(characters);
-      console.warn("Characters loaded successfully");
-      setLoading(false);
-    });
-  }, []);
-
-  if (loading) {
-    return (
-      <>
-        <Header />
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          Loading...
-        </div>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <Header />
-        <Search search={(q: SetStateAction<string>) => setQuery(q)} />
-        <Body items={items} />
-      </>
-    );
-  }
+export const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="hero" element={<Hero />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>Página não encontrada..</p>
+            </main>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 };
-
-export default App;

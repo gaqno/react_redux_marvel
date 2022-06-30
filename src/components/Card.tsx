@@ -11,9 +11,13 @@ export const Card = ({ item }: any) => {
   return (
     <div style={{ ...styles.container, flexDirection: "column" }}>
       <Link to={"/hero"} style={{ ...styles.img }}>
-        <img src={item.thumbnail.path + "/standard_fantastic.jpg"} alt="" />
+        <img
+          style={{ width: "100%", height: "100%", borderBottom: "red solid" }}
+          src={item.thumbnail.path + "/standard_fantastic.jpg"}
+          alt=""
+        />
         <div style={{ ...styles.bottom, flexDirection: "row" }}>
-          <h3>{item.name}</h3>
+          <h2>{item.name}</h2>
           <FavoriteCard />
         </div>
       </Link>
@@ -24,9 +28,10 @@ export const Card = ({ item }: any) => {
 const styles = {
   container: {
     display: "flex",
-    width: "15.5em",
+    width: "13em",
+    height: "25em",
     flexDirection: "column",
-    margin: "0 1em",
+    margin: "0 2em",
   },
   bottom: {
     display: "flex",

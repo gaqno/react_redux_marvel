@@ -1,6 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Audiowide");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
 
 html,
 body {
@@ -10,6 +20,15 @@ span,
 input {
   font-family: "Raleway", sans-serif;
   border: none;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+}
+
+h3 {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
 }
 .loading__letter {
   font-size: 88px;

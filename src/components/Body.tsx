@@ -6,7 +6,7 @@ export const Body = ({ items, orderData }: any) => {
   return (
     <>
       <div style={{ ...styles.heading }}>
-        <h4 style={{ color: "#C9C9C9", fontSize: 18 }}>
+        <h4 style={{ color: "#C9C9C9", fontSize: 22 }}>
           Encontrados {items.length} heróis
         </h4>
         <div>
@@ -26,9 +26,9 @@ export const Body = ({ items, orderData }: any) => {
 const styles = {
   heading: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     width: "100%",
-    margin: "0 1em 0 4em",
+    margin: "0px 0px 2em",
     alignItems: "center",
     marginBottom: "2em",
     placeContent: "space-evenly",
@@ -37,7 +37,8 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     margin: "0 auto",
-    width: "80%",
+    width: "100%",
+    height: "auto",
   },
   buttons: {
     display: "flex",

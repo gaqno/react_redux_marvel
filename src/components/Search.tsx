@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import { MinorSearch } from "./UI/MinorSearch";
 
-export const Search = ({ search }: any) => {
-  const [text, setText] = useState("");
+type SearchProps = {
+  search?: any;
+  style?: Object;
+};
 
+export const Search = (props: SearchProps) => {
+  const { search, style } = props;
+  const [text, setText] = useState("");
   const onSearch = (q: any) => {
     setText(q);
     search(q);
-    console.log(q);
   };
 
   return (
-    <section style={{ ...styles.searchBar }}>
-      <MinorSearch height="25px" width="25px" marginY="15px" />
+    <section style={{ ...styles.searchBar, ...style }}>
+      <MinorSearch />
       <input
         type="text"
         style={{ ...styles.input }}
@@ -29,19 +33,18 @@ const styles = {
   searchBar: {
     display: "flex",
     alignItems: "center",
-    width: "60%",
-    marginBottom: "2em",
-    height: "3em",
-    borderRadius: "25px",
+    width: "65%",
+    height: "5em",
+    borderRadius: "50px",
     backgroundColor: "#fdecec",
     color: "red",
-    margin: "0 auto",
+    margin: "0px auto",
+    marginBottom: "4em",
   },
   input: {
-    marginLeft: "10px",
+    marginLeft: "2em",
     backgroundColor: "#fdecec",
     fontSize: "16px",
-
     color: "#fa7c7c",
     fontStyle: "#fa7c7c",
     border: "none",

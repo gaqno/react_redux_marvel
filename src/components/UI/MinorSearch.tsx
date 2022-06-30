@@ -1,21 +1,13 @@
 import React from "react";
 
-type MinorSearch = {
-  height: number | string;
-  width: number | string;
-  marginY?: number | string;
-};
-export const MinorSearch = (props: MinorSearch) => {
-  const { height, width, marginY } = props;
+export const MinorSearch = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       style={{
-        height: height,
-        width: width,
-        marginTop: marginY,
-        marginBottom: marginY,
-        marginLeft: "3%",
+        height: "25px",
+        width: "25px",
+        margin: "15px 0 15px 3%",
       }}
       viewBox="0 0 19 19"
     >

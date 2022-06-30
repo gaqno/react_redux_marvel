@@ -7,7 +7,6 @@ export const ToogleOn = () => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width="75"
       height="41"
-      viewBox="0 0 75 41"
     >
       <defs>
         <circle id="path-1" cx="55.5" cy="19.5" r="10.5"></circle>

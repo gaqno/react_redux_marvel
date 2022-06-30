@@ -43,7 +43,10 @@ export const Landing = () => {
     return (
       <>
         <Header />
-        <Search search={(q: SetStateAction<string>) => setQuery(q)} />
+        <Search
+          style={{ margin: "0 auto" }}
+          search={(q: SetStateAction<string>) => setQuery(q)}
+        />
         <Loading />
       </>
     );
@@ -51,7 +54,10 @@ export const Landing = () => {
     return (
       <>
         <Header />
-        <Search search={(q: SetStateAction<string>) => setQuery(q)} />
+        <Search
+          style={{ margin: "0 auto" }}
+          search={(q: SetStateAction<string>) => setQuery(q)}
+        />
         <Body items={items} orderData={(e: any) => setOrderData(e)} />
       </>
     );

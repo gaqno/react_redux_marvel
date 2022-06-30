@@ -10,9 +10,17 @@ export const Landing = () => {
   const [query, setQuery] = useState('')
   const [loading, setLoading] = useState(true)
   const [orderData, setOrderData] = useState([])
+  const [favorites, setFavorites] = useState([])
+
+  // TODO
+  // use favorite.clicked state to favorite icon stays active
+  // hero page
 
   useEffect(() => {
     if (query === '') {
+      if (localStorage.getItem('favorites') == '[]' || !localStorage.getItem('favorites')) {
+        localStorage.setItem('favorites', '[]')
+      }
       setLoading(true)
       marvelApi.getAllCharacters(20, (characters: any) => {
         setItems(characters.data.data.results)
@@ -21,8 +29,7 @@ export const Landing = () => {
       })
     } else {
       setLoading(true)
-      marvelApi.getCharacterByname(query, (characters: any) => {
-        console.log('getCharacterByname', query)
+      marvelApi.getCharacterName(query, (characters: any) => {
         setItems(characters.data.data.results)
         console.warn('Characters by name found successfully')
         setLoading(false)
@@ -38,6 +45,14 @@ export const Landing = () => {
     }
   }, [orderData])
 
+  useEffect(() => {
+    if (favorites) {
+      setLoading(true)
+      setItems(favorites)
+      setLoading(false)
+    }
+  }, [favorites])
+
   if (loading) {
     console.warn('Loading...')
     return (
@@ -52,14 +67,12 @@ export const Landing = () => {
       <>
         <Header />
         <Search style={{ margin: '0 auto' }} search={(q: SetStateAction<string>) => setQuery(q)} />
-        <Body items={items} orderData={(e: any) => setOrderData(e)} />
+        <Body
+          favorites={(e: any) => setFavorites(e)}
+          orderData={(e: any) => setOrderData(e)}
+          items={items}
+        />
       </>
     )
   }
 }
-
-// with nameStartsWith doest work
-// https://gateway.marvel.com/v1/public/characters?nameStartsWith=S?ts=1656619465167&apikey=0d3471b572698cd12b6c88dcaf4ae453&hash=6ca4cd9c5e5281ca2ba2af65a5d3e42e
-
-// without nameStartsWith works
-// https://gateway.marvel.com/v1/public/characters?ts=1656619465167&apikey=0d3471b572698cd12b6c88dcaf4ae453&hash=6ca4cd9c5e5281ca2ba2af65a5d3e42e&limit=20

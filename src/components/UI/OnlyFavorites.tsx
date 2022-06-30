@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
 
-export const OnlyFavorites = () => {
-  const [favorite, setFavorite] = useState(false)
+export const OnlyFavorites = ({ favorites }: any) => {
+  const [clicked, setClicked] = useState(false)
 
   const handleFavorite = () => {
-    setFavorite(!favorite)
+    setClicked(!clicked)
+    if (!clicked) {
+      const favorite = JSON.parse(localStorage.getItem('favorites') || '{}')
+      favorites(favorite)
+    } else {
+      setClicked(false)
+    }
   }
   return (
     <>
       <button style={{ ...styles.button }} onClick={handleFavorite}>
-        {favorite ? (
+        {clicked ? (
           <svg
             xmlns='http://www.w3.org/2000/svg'
             style={{ marginTop: '10px' }}

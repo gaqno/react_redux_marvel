@@ -2,19 +2,19 @@ import { Card } from './Card'
 import { OnlyFavorites } from './UI/OnlyFavorites'
 import { OrderByAZ } from './UI/OrderByAZ'
 
-export const Body = ({ items, orderData }: unknown) => {
+export const Body = ({ items, orderData, favorites }: any) => {
   return (
     <>
       <div style={{ ...styles.heading }}>
         <h4 style={{ color: '#C9C9C9', fontSize: 22 }}>Encontrados {items.length} heróis</h4>
         <div>
           <OrderByAZ orderData={orderData} />
-          <OnlyFavorites />
+          <OnlyFavorites favorites={favorites} />
         </div>
       </div>
       <section style={{ ...styles.section, flexWrap: 'wrap' }}>
         {items.map((item: any) => (
-          <Card key={item.id} item={item} />
+          <Card key={item.id} item={item} favorites={favorites} />
         ))}
       </section>
     </>
@@ -35,7 +35,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     margin: '0 auto',
-    width: '100%',
+    width: '70em',
     height: 'auto',
   },
   buttons: {

@@ -17,7 +17,7 @@ export const Hero = () => {
           style={{ ...styles.search, backgroundColor: 'white' }}
         />
       </header>
-      <main>
+      <main style={{ display: 'flex' }}>
         <div style={{ ...styles.container }}>
           <span style={{ display: 'flex' }}>
             <h1> TITLE </h1>
@@ -38,7 +38,7 @@ export const Hero = () => {
 
 const styles = {
   container: {
-    height: '100%',
+    width: '40%',
     backgroundColor: '#d5f5d5',
   },
   header: {

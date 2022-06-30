@@ -9,13 +9,14 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}",
-      "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
-      "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}",
+    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
     "axios": "^0.27.2",
+    "crypto-hash": "^2.0.1",
     "dotenv": "^16.0.1",
     "md5": "^2.3.0",
     "react": "^18.0.0",

@@ -1,13 +1,7 @@
 import { Link, Outlet } from 'react-router-dom'
 import { FavoriteCard } from './UI/FavoriteCard'
 
-export const Card = ({ item }: any) => {
-  // const favorite = (item: any) => {
-  //   var previousData = JSON.parse(localStorage.getItem("favorites") || "{}");
-  //   previousData.push(item);
-  //   localStorage.setItem("favorites", JSON.stringify(previousData));
-  // };
-
+export const Card = ({ item, favorites }: any) => {
   return (
     <div style={{ ...styles.container, flexDirection: 'column' }}>
       <Link to={'/hero'}>
@@ -19,7 +13,7 @@ export const Card = ({ item }: any) => {
       </Link>
       <div style={{ ...styles.bottom, flexDirection: 'row' }}>
         <h2 style={{ ...styles.name }}>{item.name}</h2>
-        <FavoriteCard />
+        <FavoriteCard item={item} />
       </div>
     </div>
   )

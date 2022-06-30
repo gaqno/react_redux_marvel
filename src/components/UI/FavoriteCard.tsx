@@ -1,15 +1,26 @@
 import React, { useState } from 'react'
 
-export const FavoriteCard = () => {
+export const FavoriteCard = ({ item }: any) => {
   const [clicked, setClicked] = useState(false)
 
-  const cardFavoriteHandler = () => {
-    setClicked(!clicked)
-    console.log('handle')
+  const favoriteHandler = () => {
+    const favoriteOnClick = (item: any) => {
+      setClicked(!clicked)
+      if (!clicked) {
+        const favorites = JSON.parse(localStorage.getItem('favorites') || '{}')
+        favorites.push({ ...item, clicked: true })
+        localStorage.setItem('favorites', JSON.stringify(favorites))
+        return favorites
+      } else {
+        const favorites = JSON.parse(localStorage.getItem('favorites') || '{}')
+        favorites.pop(item)
+        setClicked(false)
+      }
+    }
+    favoriteOnClick(item)
   }
-
   return (
-    <button style={{ ...styles.button }} onClick={cardFavoriteHandler}>
+    <button style={{ ...styles.button }} onClick={favoriteHandler}>
       {clicked ? (
         <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'>
           <g fill='none' fillRule='evenodd' stroke='none' strokeWidth='1'>

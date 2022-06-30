@@ -27,10 +27,11 @@ const styles = {
   heading: {
     display: "flex",
     justifyContent: "space-between",
-    width: "68em",
-    margin: "0 auto",
+    width: "100%",
+    margin: "0 1em 0 4em",
     alignItems: "center",
     marginBottom: "2em",
+    placeContent: "space-evenly",
   },
   section: {
     display: "flex",

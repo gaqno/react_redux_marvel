@@ -1,7 +1,7 @@
 import axios from "axios";
 import md5 from "md5";
 
-const baseUrl = "http://gateway.marvel.com/v1/public/";
+const baseUrl = "https://gateway.marvel.com/v1/public/";
 const privateKey = "e3bbad0cda7a5dfb5638593490a121d03e87c886";
 const publicKey = "0d3471b572698cd12b6c88dcaf4ae453";
 const time = Number(new Date());

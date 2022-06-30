@@ -19,6 +19,7 @@ const styles = {
     width: "80%",
     margin: "30px auto",
     alignItems: "center",
+    alignContent: "center",
   },
   subtitle: {
     color: "grey",

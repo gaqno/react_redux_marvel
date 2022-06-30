@@ -1,5 +1,5 @@
-import { Link, Outlet } from "react-router-dom";
-import { FavoriteCard } from "./UI/FavoriteCard";
+import { Link, Outlet } from 'react-router-dom'
+import { FavoriteCard } from './UI/FavoriteCard'
 
 export const Card = ({ item }: any) => {
   // const favorite = (item: any) => {
@@ -9,38 +9,38 @@ export const Card = ({ item }: any) => {
   // };
 
   return (
-    <div style={{ ...styles.container, flexDirection: "column" }}>
-      <Link to={"/hero"}>
+    <div style={{ ...styles.container, flexDirection: 'column' }}>
+      <Link to={'/hero'}>
         <img
-          style={{ width: "100%", height: "100%", borderBottom: "red solid" }}
-          src={item.thumbnail.path + "/standard_fantastic.jpg"}
-          alt=""
+          style={{ width: '100%', height: '100%', borderBottom: 'red solid' }}
+          src={item.thumbnail.path + '/standard_fantastic.jpg'}
+          alt=''
         />
       </Link>
-      <div style={{ ...styles.bottom, flexDirection: "row" }}>
+      <div style={{ ...styles.bottom, flexDirection: 'row' }}>
         <h2 style={{ ...styles.name }}>{item.name}</h2>
         <FavoriteCard />
       </div>
     </div>
-  );
-};
+  )
+}
 
 const styles = {
   container: {
-    display: "flex",
-    width: "13em",
-    height: "20em",
-    flexDirection: "column",
-    margin: "0 2em",
+    display: 'flex',
+    width: '13em',
+    height: '20em',
+    flexDirection: 'column',
+    margin: '0 2em',
   },
   bottom: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
   },
   name: {
-    textDecoration: "none",
-    width: "100%",
+    textDecoration: 'none',
+    width: '100%',
   },
-};
+}

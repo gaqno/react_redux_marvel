@@ -1,25 +1,25 @@
-import React, { SetStateAction } from "react";
-import { Search } from "./Search";
-import { FavoriteCard } from "./UI/FavoriteCard";
-import { MinorLogo } from "./UI/MinorLogo";
+import React, { SetStateAction } from 'react'
+import { Search } from './Search'
+import { FavoriteCard } from './UI/FavoriteCard'
+import { MinorLogo } from './UI/MinorLogo'
 
 type HeroProps = {
-  backgroundColor: string;
-};
+  backgroundColor: string
+}
 
 export const Hero = () => {
   return (
     <div style={{ ...styles.container }}>
-      <header style={{ ...styles.header, flexDirection: "row" }}>
-        <MinorLogo width="25em" height="10em" transform={0.5} />
+      <header style={{ ...styles.header, flexDirection: 'row' }}>
+        <MinorLogo width='25em' height='10em' transform={0.5} />
         <Search
-          input={{ backgroundColor: "white" }}
-          style={{ ...styles.search, backgroundColor: "white" }}
+          input={{ backgroundColor: 'white' }}
+          style={{ ...styles.search, backgroundColor: 'white' }}
         />
       </header>
       <main>
         <div style={{ ...styles.container }}>
-          <span style={{ display: "flex" }}>
+          <span style={{ display: 'flex' }}>
             <h1> TITLE </h1>
             <FavoriteCard />
           </span>
@@ -33,22 +33,22 @@ export const Hero = () => {
         <h2>Ultimos lançamentos</h2>
       </section>
     </div>
-  );
-};
+  )
+}
 
 const styles = {
   container: {
-    height: "100%",
-    backgroundColor: "#d5f5d5",
+    height: '100%',
+    backgroundColor: '#d5f5d5',
   },
   header: {
-    display: "flex",
-    height: "10em",
+    display: 'flex',
+    height: '10em',
   },
   search: {
-    width: "35em",
-    height: "3em",
-    margin: "3em 0 0 1em",
+    width: '35em',
+    height: '3em',
+    margin: '3em 0 0 1em',
   },
   about: {},
-};
+}

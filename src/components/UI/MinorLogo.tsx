@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 type MinorLogo = {
@@ -9,6 +9,7 @@ type MinorLogo = {
 
 export const MinorLogo = (props: MinorLogo) => {
   const { width, height, transform } = props;
+
   return (
     <Link to="/">
       <svg
@@ -19,6 +20,7 @@ export const MinorLogo = (props: MinorLogo) => {
         style={{
           transform: `scale(${transform})`,
         }}
+        viewBox={`0 0 ${width} ${height}`}
       >
         <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
           <g transform="translate(-78 -313)">

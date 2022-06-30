@@ -4,10 +4,11 @@ import { MinorSearch } from "./UI/MinorSearch";
 type SearchProps = {
   search?: any;
   style?: Object;
+  input?: Object;
 };
 
 export const Search = (props: SearchProps) => {
-  const { search, style } = props;
+  const { search, style, input } = props;
   const [text, setText] = useState("");
   const onSearch = (q: any) => {
     setText(q);
@@ -19,7 +20,7 @@ export const Search = (props: SearchProps) => {
       <MinorSearch />
       <input
         type="text"
-        style={{ ...styles.input }}
+        style={{ ...styles.input, ...input }}
         placeholder="Procure por heróis"
         autoFocus
         onChange={(e) => onSearch(e.target.value)}
@@ -42,7 +43,7 @@ const styles = {
     marginBottom: "4em",
   },
   input: {
-    marginLeft: "2em",
+    marginLeft: "1em",
     backgroundColor: "#fdecec",
     fontSize: "16px",
     color: "#fa7c7c",

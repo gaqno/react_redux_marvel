@@ -1,5 +1,6 @@
 import React, { SetStateAction } from "react";
 import { Search } from "./Search";
+import { FavoriteCard } from "./UI/FavoriteCard";
 import { MinorLogo } from "./UI/MinorLogo";
 
 type HeroProps = {
@@ -8,13 +9,24 @@ type HeroProps = {
 
 export const Hero = () => {
   return (
-    <div style={{}}>
+    <div style={{ ...styles.container }}>
       <header style={{ ...styles.header, flexDirection: "row" }}>
         <MinorLogo width="25em" height="10em" transform={0.5} />
-        <Search style={{ ...styles.search }} />
+        <Search
+          input={{ backgroundColor: "white" }}
+          style={{ ...styles.search, backgroundColor: "white" }}
+        />
       </header>
       <main>
-        <div>Box</div>
+        <div style={{ ...styles.container }}>
+          <span style={{ display: "flex" }}>
+            <h1> TITLE </h1>
+            <FavoriteCard />
+          </span>
+          <span>
+            <p>Description</p>
+          </span>
+        </div>
         <div>Image</div>
       </main>
       <section>
@@ -31,11 +43,12 @@ const styles = {
   },
   header: {
     display: "flex",
-    alignItems: "center",
+    height: "10em",
   },
   search: {
-    width: "50em",
+    width: "35em",
     height: "3em",
-    margin: "0 0 0 5em",
+    margin: "3em 0 0 1em",
   },
+  about: {},
 };

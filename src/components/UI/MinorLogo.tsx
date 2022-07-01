@@ -20,7 +20,6 @@ export const MinorLogo = (props: MinorLogo) => {
         style={{
           transform: `scale(${transform})`,
         }}
-        viewBox={`0 0 ${width} ${height}`}
       >
         <g fill='none' fillRule='evenodd' stroke='none' strokeWidth='1'>
           <g transform='translate(-78 -313)'>

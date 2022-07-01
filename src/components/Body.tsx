@@ -25,7 +25,7 @@ const styles = {
   heading: {
     display: 'flex',
     justifyContent: 'space-around',
-    width: '100%',
+    width: '100vw',
     margin: '0px 0px 2em',
     alignItems: 'center',
     marginBottom: '2em',
@@ -35,7 +35,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     margin: '0 auto',
-    width: '70em',
+    width: '70vw',
     height: 'auto',
   },
   buttons: {

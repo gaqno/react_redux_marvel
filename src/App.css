@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Audiowide");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Audiowide');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
 
 * {
   margin: 0;
@@ -14,20 +14,20 @@
 
 html,
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 span,
 input {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   border: none;
 }
 
 h1 {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 h3 {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-decoration: none;
 }
 .loading__letter {
@@ -36,7 +36,7 @@ h3 {
   letter-spacing: 4px;
   text-transform: uppercase;
   animation-name: bounce;
-  font-family: "Audiowide";
+  font-family: 'Audiowide';
   animation-duration: 2s;
   animation-iteration-count: infinite;
 }

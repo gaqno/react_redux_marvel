@@ -64,7 +64,7 @@ export const Landing = () => {
     )
   } else {
     return (
-      <>
+      <div>
         <Header />
         <Search style={{ margin: '0 auto' }} search={(q: SetStateAction<string>) => setQuery(q)} />
         <Body
@@ -72,7 +72,7 @@ export const Landing = () => {
           orderData={(e: any) => setOrderData(e)}
           items={items}
         />
-      </>
+      </div>
     )
   }
 }

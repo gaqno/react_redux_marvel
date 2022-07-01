@@ -68,7 +68,6 @@ const styles = {
   },
   header: {
     display: 'flex',
-    height: '10em',
   },
   search: {
     width: '65em',

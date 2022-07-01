@@ -28,7 +28,6 @@ export const Landing = () => {
         setLoading(false)
       })
     } else {
-      setLoading(true)
       marvelApi.getCharacterName(query, (characters: any) => {
         setItems(characters.data.data.results)
         console.warn('Characters by name found successfully')

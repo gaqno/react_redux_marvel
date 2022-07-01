@@ -9,7 +9,6 @@ export const OrderByAZ = ({ orderData }: any) => {
     marvelApi.orderByDesc((character: any) => {
       return orderData(character.data.data.results)
     })
-
     if (clicked) {
       setClicked(false)
       marvelApi.orderByAcd((character: any) => {

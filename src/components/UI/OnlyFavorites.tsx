@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 export const OnlyFavorites = ({ favorites }: any) => {
   const [clicked, setClicked] = useState(false)
-  const navigate = useNavigate()
   const handleFavorite = () => {
     setClicked(!clicked)
     if (!clicked) {
       const favorite = JSON.parse(localStorage.getItem('favorites') || '{}')
-      while (favorite.length < 5) {
-        favorites(favorite)
-      }
+      favorites(favorite)
     } else {
       window.location.reload()
     }
+    console.log(localStorage.getItem('favorites'))
   }
   return (
     <>

@@ -11,10 +11,7 @@ export const Landing = () => {
   const [loading, setLoading] = useState(true)
   const [orderData, setOrderData] = useState([])
   const [favorites, setFavorites] = useState([])
-
-  // TODO
-  // use favorite.clicked state to favorite icon stays active
-  // hero page
+  const [totalCards, setTotalCards] = useState(20)
 
   useEffect(() => {
     if (query === '') {
@@ -22,19 +19,27 @@ export const Landing = () => {
         localStorage.setItem('favorites', '[]')
       }
       setLoading(true)
-      marvelApi.getAllCharacters(20, (characters: any) => {
+      marvelApi.getAllCharacters(totalCards, (characters: any) => {
         setItems(characters.data.data.results)
-        console.warn('Characters loaded successfully')
         setLoading(false)
       })
     } else {
+      setLoading(true)
       marvelApi.getCharacterName(query, (characters: any) => {
         setItems(characters.data.data.results)
-        console.warn('Characters by name found successfully')
         setLoading(false)
       })
     }
-  }, [query])
+  }, [query, totalCards])
+
+  // useEffect(() => {
+  //   if (totalCards) {
+  //     setLoading(true)
+  //     setItems(totalCards)
+  //     setLoading(false)
+  //     console.log(totalCards)
+  //   }
+  // }, [totalCards])
 
   useEffect(() => {
     if (orderData) {
@@ -52,6 +57,10 @@ export const Landing = () => {
     }
   }, [favorites])
 
+  const totalCardsHandle = (newValue) => {
+    setTotalCards(newValue)
+  }
+
   if (loading) {
     console.warn('Loading...')
     return (
@@ -67,6 +76,8 @@ export const Landing = () => {
         <Header />
         <Search style={{ margin: '0 auto' }} search={(q: SetStateAction<string>) => setQuery(q)} />
         <Body
+          setTotalCards={totalCardsHandle}
+          totalCards={totalCards}
           favorites={(e: any) => setFavorites(e)}
           orderData={(e: any) => setOrderData(e)}
           items={items}

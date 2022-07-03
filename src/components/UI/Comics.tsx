@@ -14,7 +14,6 @@ export const Comics = (props: Comics) => {
           style={{
             width: '100',
             height: '100',
-            margin: '1em',
           }}
           viewBox='0 0 100 31'
         >

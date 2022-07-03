@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { marvelApi } from '../services/marvelApi'
+import { useEffect } from 'react'
 import { Card } from './Card'
 import { OnlyFavorites } from './UI/OnlyFavorites'
 import { OrderByAZ } from './UI/OrderByAZ'
@@ -17,8 +16,7 @@ export const Body = (props: BodyProps) => {
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) {
-        console.log('Element is visiable', totalCards)
-        setTotalCards((totalCardsInsideState: number) => totalCardsInsideState + 5)
+        setTotalCards((totalCardsInsideState: number) => totalCardsInsideState + 20)
       }
     })
     intersectionObserver.observe(document.querySelector<any>('#sentinela'))
@@ -27,22 +25,18 @@ export const Body = (props: BodyProps) => {
 
   return (
     <>
-      <div style={{ ...styles.heading }}>
-        <h4 style={{ color: '#C9C9C9', fontSize: 22 }}>Encontrados {items.length} heróis</h4>
+      <div className='mobile_landingFilter' style={{ ...styles.heading }}>
+        <h4>Encontrados {items.length} heróis</h4>
         <div>
           <OrderByAZ orderData={orderData} />
           <OnlyFavorites favorites={favorites} />
         </div>
       </div>
-      <h1>Pagina atual: {totalCards}</h1>
       <section style={{ ...styles.section, flexWrap: 'wrap' }}>
         {items.map((item: any) => (
           <Card key={item.id} item={item} favorites={favorites} />
         ))}
-        <span
-          id='sentinela'
-          style={{ width: '100%', height: '10px', backgroundColor: 'red' }}
-        ></span>
+        <span id='sentinela' style={{ ...styles.sentinela }} />
       </section>
     </>
   )
@@ -52,7 +46,7 @@ const styles = {
   heading: {
     display: 'flex',
     justifyContent: 'space-around',
-    width: '100vw',
+    width: 'auto',
     margin: '0px 0px 2em',
     alignItems: 'center',
     marginBottom: '2em',
@@ -70,5 +64,11 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-around',
     width: '15%',
+  },
+  sentinela: {
+    minWidth: '99vw',
+    height: '35px',
+    marginTop: '25vh',
+    backgroundColor: 'red',
   },
 }

@@ -3,12 +3,13 @@ import { MinorSearch } from './UI/MinorSearch'
 
 type SearchProps = {
   search?: any
-  style?: Record<string, unknown>
-  input?: Record<string, unknown>
+  style?: any
+  input?: any
+  className?: any
 }
 
 export const Search = (props: SearchProps) => {
-  const { search, style, input } = props
+  const { search, style, input, className } = props
   const [text, setText] = useState('')
   const onSearch = (q: any) => {
     setText(q)
@@ -16,7 +17,7 @@ export const Search = (props: SearchProps) => {
   }
 
   return (
-    <section style={{ ...styles.searchBar, ...style }}>
+    <section className={className} style={{ ...styles.searchBar, ...style }}>
       <MinorSearch />
       <input
         type='text'

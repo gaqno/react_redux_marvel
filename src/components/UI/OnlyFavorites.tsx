@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
+import { Loading } from './Loading'
 
 export const OnlyFavorites = ({ favorites }: any) => {
   const [clicked, setClicked] = useState(false)
   const handleFavorite = () => {
     setClicked(!clicked)
+    const favorite = JSON.parse(localStorage.getItem('favorites') || '{}')
     if (!clicked) {
-      const favorite = JSON.parse(localStorage.getItem('favorites') || '{}')
       favorites(favorite)
     } else {
+      localStorage.clear()
       window.location.reload()
     }
-    console.log(localStorage.getItem('favorites'))
   }
   return (
     <>

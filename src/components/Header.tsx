@@ -3,7 +3,7 @@ import { MinorLogo } from './UI/MinorLogo'
 export const Header = () => {
   return (
     <div style={{ flexDirection: 'column', ...styles.header }}>
-      <MinorLogo width='26em' height='10em' />
+      <MinorLogo className='mobile_landingLogo' width='26em' height='10em' />
       <h1 style={{ ...styles.title }}> EXPLORE O UNIVERSO</h1>
       <p style={{ ...styles.subtitle }}>
         Mergulhe no domínio deslumbrante de todos os personagens clássicos que você ama - e aqueles

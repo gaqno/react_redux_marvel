@@ -13,7 +13,7 @@ export const Card = ({ item, favorites }: any) => {
       </Link>
       <div style={{ ...styles.bottom, flexDirection: 'row' }}>
         <h2 style={{ ...styles.name }}>{item.name}</h2>
-        <FavoriteCard item={item} />
+        <FavoriteCard item={item} favorites={favorites} />
       </div>
     </div>
   )

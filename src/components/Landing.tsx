@@ -14,32 +14,26 @@ export const Landing = () => {
   const [totalCards, setTotalCards] = useState(20)
 
   useEffect(() => {
-    if (query === '') {
-      if (localStorage.getItem('favorites') == '[]' || !localStorage.getItem('favorites')) {
+    const fetchData = async () => {
+      if (query === '') {
         localStorage.setItem('favorites', '[]')
+        await marvelApi.getAllCharacters(totalCards, (characters: any) => {
+          setItems(characters.data.data.results)
+        })
+        setLoading(false)
+      } else {
+        localStorage.getItem('favorites' || '[]')
+        await marvelApi.getCharacterName(query, (characters: any) => {
+          setItems(characters.data.data.results)
+        })
+        setLoading(false)
       }
-      setLoading(true)
-      marvelApi.getAllCharacters(totalCards, (characters: any) => {
-        setItems(characters.data.data.results)
-        setLoading(false)
-      })
-    } else {
-      setLoading(true)
-      marvelApi.getCharacterName(query, (characters: any) => {
-        setItems(characters.data.data.results)
-        setLoading(false)
-      })
     }
+    const timer = setTimeout(() => {
+      fetchData()
+    }, 100)
+    return () => clearTimeout(timer)
   }, [query, totalCards])
-
-  // useEffect(() => {
-  //   if (totalCards) {
-  //     setLoading(true)
-  //     setItems(totalCards)
-  //     setLoading(false)
-  //     console.log(totalCards)
-  //   }
-  // }, [totalCards])
 
   useEffect(() => {
     if (orderData) {
@@ -57,7 +51,7 @@ export const Landing = () => {
     }
   }, [favorites])
 
-  const totalCardsHandle = (newValue) => {
+  const totalCardsHandle = (newValue: any) => {
     setTotalCards(newValue)
   }
 
@@ -66,7 +60,11 @@ export const Landing = () => {
     return (
       <>
         <Header />
-        <Search style={{ margin: '0 auto' }} search={(q: SetStateAction<string>) => setQuery(q)} />
+        <Search
+          className='mobile_landingSearch'
+          style={{ margin: '0 auto' }}
+          search={(q: SetStateAction<string>) => setQuery(q)}
+        />
         <Loading />
       </>
     )
@@ -74,7 +72,11 @@ export const Landing = () => {
     return (
       <div>
         <Header />
-        <Search style={{ margin: '0 auto' }} search={(q: SetStateAction<string>) => setQuery(q)} />
+        <Search
+          className='mobile_landingSearch'
+          style={{ margin: '0 auto' }}
+          search={(q: SetStateAction<string>) => setQuery(q)}
+        />
         <Body
           setTotalCards={totalCardsHandle}
           totalCards={totalCards}

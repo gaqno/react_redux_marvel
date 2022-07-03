@@ -21,11 +21,6 @@ export class marvelApi {
     )
     callback(request)
   }
-  // static getCharactersOffset = async (offset: number, callback: any) => {
-  //   const urlCharacters = baseUrl + 'characters' + '&offset=' + offset + CONFIG
-  //   const request = await axios.get(urlCharacters)
-  //   callback(request)
-  // }
   static getComicsByCharacterId = async (query: number, callback: any) => {
     const hash = '03247d10af559a64150bce620ec1f01e'
     // https://gateway.marvel.com/v1/public/comics?characters=1009717&orderBy=onsaleDate&ts=1&apikey=f929fc77911a47c2a28a5fda5cb17dcb&hash=03247d10af559a64150bce620ec1f01e
@@ -45,7 +40,3 @@ export class marvelApi {
     callback(request)
   }
 }
-
-// https://gateway.marvel.com/v1/public/characters?ts=1656785736475&apikey=0d3471b572698cd12b6c88dcaf4ae453&hash=899db2903bfbac6c6cfb6d4b0a06ab1b&limit=20
-
-// https://gateway.marvel.com/v1/public/characters&offset=30?ts=1656785736475&apikey=0d3471b572698cd12b6c88dcaf4ae453&hash=899db2903bfbac6c6cfb6d4b0a06ab1b

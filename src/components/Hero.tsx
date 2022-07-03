@@ -1,38 +1,65 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { marvelApi } from '../services/marvelApi'
 import { Search } from './Search'
 import { Comics } from './UI/Comics'
 import { FavoriteCard } from './UI/FavoriteCard'
 import { Loading } from './UI/Loading'
 import { MinorLogo } from './UI/MinorLogo'
 
+interface Comics {
+  state: any
+}
+
 export const Hero = () => {
-  const location = useLocation()
+  const location = useLocation() as unknown as Comics
+  const id = location.state.id as Comics
   const [loading, setLoading] = useState(true)
   const [character, setCharacter] = useState<any>([])
   const [comics, setComics] = useState<any>([])
 
   useEffect(() => {
     if (loading) {
-      setCharacter(location.state)
-      setLoading(false)
+      try {
+        setCharacter(location.state)
+        marvelApi.getComicsByCharacterId(location.state.id, (comics: any) => {
+          setComics(comics.data.data.results)
+          setLoading(false)
+        })
+      } catch (err: any) {
+        console.error(err)
+      }
     }
   }, [])
 
+  console.log(character, comics)
   if (loading) {
     return <Loading />
   }
   return (
-    <div style={{ ...styles.container }}>
-      <header style={{ ...styles.header, flexDirection: 'row', flexWrap: 'wrap' }}>
-        <MinorLogo width='25em' height='10em' transform={0.6} />
-        <Search input={{ backgroundColor: 'white' }} style={{ ...styles.search }} />
+    <div className='mobile_heroContainer' style={{ ...styles.container }}>
+      <header
+        className='mobile_heroHeader'
+        style={{ ...styles.header, flexDirection: 'row', flexWrap: 'wrap' }}
+      >
+        <MinorLogo className='mobile_heroLogo' width='25em' height='10em' transform={0.6} />
+        <Search
+          className={'mobile_heroProfile'}
+          input={{ backgroundColor: 'white' }}
+          style={{ ...styles.search }}
+        />
       </header>
-      <div style={{ position: 'absolute' }}>
-        <h1 style={{ ...styles.bgName, textTransform: 'uppercase' }}>{character.name}</h1>
-      </div>
-      <main style={{ display: 'flex', position: 'relative', padding: '10em' }}>
-        <div style={{ ...styles.about }}>
+      <h1
+        className='mobile_heroBgtext'
+        style={{ ...styles.bgName, position: 'absolute', textTransform: 'uppercase' }}
+      >
+        {character.name}
+      </h1>
+      <section
+        className='mobile_heroInfos'
+        style={{ display: 'flex', position: 'relative', padding: '0 10em' }}
+      >
+        <div className='mobile_heroAbout' style={{ ...styles.about }}>
           <span style={{ display: 'flex' }}>
             <h1> {character.name} </h1>
             <FavoriteCard />
@@ -40,21 +67,41 @@ export const Hero = () => {
           {character.description === '' ? (
             <p style={{ fontSize: '16px' }}>Sem descrição disponível</p>
           ) : (
-            <p style={{ fontSize: '24px' }}>{character.description}</p>
+            <p style={{ fontSize: '24px', margin: '0 5em' }}>{character.description}</p>
           )}
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+          <div
+            className='mobile_heroComicsMovies'
+            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+          >
             <Comics comics={character.comics.available} movies={character.series.available} />
           </div>
-          <p style={{ fontSize: '24px' }}>
+          <p style={{ fontSize: '16px', marginBottom: '1em' }}>
             <b>Último quadrinho:</b> {character.modified}
           </p>
         </div>
         <div style={{ ...styles.images }}>
           <img src={character.thumbnail.path + '/portrait_uncanny.jpg'} alt='' />
         </div>
-      </main>
-      <section style={{ display: 'relative', justifyContent: 'center' }}>
-        <h2>Ultimos lançamentos</h2>
+      </section>
+      <section>
+        <div className='mobile_heroComics' style={{ position: 'relative', padding: '0 10em' }}>
+          <h1 style={{ paddingBottom: '5em' }}>Ultimos lançamentos </h1>
+          <div>
+            {comics.map((comic: any) => {
+              return (
+                <div key={comic.id} style={{ display: 'inline-grid', paddingLeft: '0.3%' }}>
+                  <img
+                    src={
+                      comic.images.map((img: { path: string }) => img.path) +
+                      '/portrait_uncanny.jpg'
+                    }
+                    alt=''
+                  />
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </section>
     </div>
   )
@@ -62,8 +109,8 @@ export const Hero = () => {
 
 const styles = {
   container: {
-    width: '100vw',
-    height: '100vh',
+    width: 'auto',
+    height: 'auto',
     backgroundColor: '#d5f5d5',
   },
   header: {
@@ -90,7 +137,6 @@ const styles = {
     color: 'white',
     opacity: 0.5,
     zIndex: 0,
-    width: '80vw',
     margin: '5% 20%',
   },
 }
